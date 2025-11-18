@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - FinSmart</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    .contact-form {
+      background-color: #1e1e1e;
+      padding: 30px;
+      margin: 50px auto;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #03dac6;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form input[type="submit"],
+    .contact-form textarea {
+      background-color: #2b2b2b;
+      color: #ffffff;
+      border: 1px solid #03dac6;
+      width: 90%;
+      margin: 10px auto;
+      padding: 12px;
+      border-radius: 5px;
+      font-size: 16px;
+      display: block;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 10px #03dac6;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .contact-form input[type="submit"] {
+      background-color: #03dac6;
+      color: #121212;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .contact-form input[type="submit"]:hover {
+      background-color: #018786;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h2>📬 Contact FinSmart – AI-Driven Loan & Expense Advisor</h2>
+
+  <form method="POST" class="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email Address" required>
+    <input type="text" name="subject" placeholder="Subject" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <input type="submit" value="Send Message">
+  </form>
+
+  {% if success %}
+    <p style="color: #03dac6;">✅ Your message was sent successfully!</p>
+  {% elif error %}
+    <p style="color: red;">❌ {{ error }}</p>
+  {% endif %}
+
+<a href="{{ url_for('dashboard') if current_user.is_authenticated else url_for('index') }}">Go Back To Dashboard</a>
+</body>
+</html>

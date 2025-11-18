@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FinSmart - Terms & Conditions</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1 class="logo" style="text-align: left; margin-left: 20px;">FinSmart</h1>
+    <div class="menu">
+      <a href="{{ url_for('dashboard') if current_user.is_authenticated else url_for('index') }}">Home</a>
+
+      <a href="/contact">Contact Us</a>
+      <a href="/terms">Terms & Policy</a>
+      <a href="/login">Login</a>
+    </div>
+  </header>
+
+  <main style="padding: 20px; text-align: left; max-width: 900px; margin: auto;">
+    <h2 style="color: #03dac6;">Terms & Conditions</h2>
+
+    <p><strong>Last updated:</strong> June 30, 2025</p>
+    <p>Please read these terms and conditions carefully before using our service.</p>
+
+    <h3>Interpretation and Definitions</h3>
+    <p><strong>Affiliate</strong>: An entity that controls, is controlled by, or is under common control with a party.</p>
+    <p><strong>Country</strong>: Haryana, India</p>
+    <p><strong>Company</strong>: FinSmart – AI-Driven Loan & Expense Advisor</p>
+    <p><strong>Device</strong>: Any device that can access the Service (computer, phone, etc.).</p>
+    <p><strong>Service</strong>: Refers to the FinSmart website.</p>
+    <p><strong>You</strong>: The user accessing or using the Service.</p>
+
+    <h3>Acknowledgment</h3>
+    <p>By using this service, you agree to these terms. If you disagree, please do not use the service.</p>
+
+    <h3>Links to Other Websites</h3>
+    <p>We are not responsible for third-party websites or services linked from our site.</p>
+
+    <h3>Termination</h3>
+    <p>We may suspend or terminate access to the service immediately if you violate these terms.</p>
+
+    <h3>Limitation of Liability</h3>
+    <p>We are not liable for indirect or incidental damages resulting from your use of the service.</p>
+
+    <h3>Disclaimer</h3>
+    <p>The service is provided "AS IS" without any warranties. We do not guarantee uninterrupted access.</p>
+
+    <h3>Governing Law</h3>
+    <p>These terms are governed by the laws of India.</p>
+
+    <h3>Dispute Resolution</h3>
+    <p>We encourage you to contact us first to resolve any disputes.</p>
+
+    <h3>Changes to These Terms</h3>
+    <p>We may update our terms from time to time. Continued use implies acceptance of any changes.</p>
+
+    <h3>Contact Us</h3>
+    <p>If you have any questions:</p>
+    <ul>
+      <li>📞 Phone: 9813655003</li>
+    </ul>
+  </main>
+
+  <footer style="margin-top: 40px; padding: 20px; background-color: #1e1e1e;">
+    <div>
+      <a href="/about" style="margin-right: 20px; color: #03dac6;">About Us</a>
+      <a href="/privacy" style="margin-right: 20px; color: #03dac6;">Privacy Policy</a>
+      <a href="/terms" style="margin-right: 20px; color: #03dac6;">Terms of Service</a>
+      <a href="/contact" style="color: #03dac6;">Contact</a>
+    </div>
+    <div style="margin-top: 10px; color: #aaa;">
+      © 2025 FinSmart – AI-Driven Loan & Expense Advisor . All rights reserved. | Built with 💙 for better money management.
+    </div>
+  </footer>
+</body>
+</html>

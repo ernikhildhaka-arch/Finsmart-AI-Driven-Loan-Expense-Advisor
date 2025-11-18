@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logout Confirmation</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      text-align: center;
+      margin-top: 100px;
+    }
+    .form-box {
+      background-color: #1e1e1e;
+      padding: 25px 35px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #03dac6;
+      display: inline-block;
+    }
+    button {
+      background: none;
+      border: none;
+      color: #03dac6;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1em;
+      text-decoration: underline;
+    }
+    button:hover {
+      color: #00bfa5;
+    }
+    a {
+      display: block;
+      margin-top: 15px;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.95em;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h3>Are you sure you want to log out?</h3>
+    <form method="POST" action="{{ url_for('logout') }}">
+      <button type="submit">✅ Yes, Logout</button>
+    </form>
+    <a href="{{ url_for('dashboard') }}">⬅️ No, go back</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!-- alert.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spending Alert</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h2>Monthly Spending Alert</h2>
+
+    <form method="POST">
+        <!-- Readonly email filled from session -->
+        <input type="email" name="email" value="{{ user_email }}" readonly required>
+        <button type="submit">Send Alert</button>
+    </form>
+
+    {% if result %}
+        <p><strong>{{ result }}</strong></p>
+    {% endif %}
+    <a href="/dashboard">⬅️ Back to Dashboard</a>
+    <br>
+    <br>
+
+    <a href="/">⬅️ Back to Home</a>
+</body>
+</html>

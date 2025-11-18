@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FinSmart - Privacy Policy</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1 class="logo" style="text-align: left; margin-left: 20px;">FinSmart</h1>
+    <div class="menu">
+      <a href="{{ url_for('dashboard') if current_user.is_authenticated else url_for('index') }}">Home</a>
+
+      <a href="/contact">Contact Us</a>
+      <a href="/terms">Terms</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/login">Login</a>
+    </div>
+  </header>
+
+  <main style="padding: 20px; text-align: left; max-width: 900px; margin: auto;">
+    <h2 style="color: #03dac6;">Privacy Policy</h2>
+
+    <p><strong>Last updated:</strong> June 30, 2025</p>
+
+    <p>At FinSmart, your privacy is important to us. This Privacy Policy outlines how we collect, use, and protect your personal information when you use our services.</p>
+
+    <h3>1. Information We Collect</h3>
+    <ul>
+      <li><strong>Personal Information:</strong> such as name, email address, income details, and spending records.</li>
+      <li><strong>Usage Data:</strong> including pages visited, time spent on site, and user actions.</li>
+      <li><strong>Cookies:</strong> to enhance your user experience.</li>
+    </ul>
+
+    <h3>2. How We Use Your Information</h3>
+    <p>We use your data to:</p>
+    <ul>
+      <li>Provide financial insights, predictions, and tools.</li>
+      <li>Send important updates or reminders.</li>
+      <li>Improve the accuracy of our models and services.</li>
+    </ul>
+
+    <h3>3. Data Security</h3>
+    <p>We implement secure systems and encryption to protect your data from unauthorized access or disclosure.</p>
+
+    <h3>4. Data Sharing</h3>
+    <p>We do <strong>not</strong> share your data with third-party companies. Data may be anonymized and used for improving our algorithms.</p>
+
+    <h3>5. Your Choices</h3>
+    <ul>
+      <li>You can request to view, update, or delete your data at any time.</li>
+      <li>Disable cookies via browser settings if you prefer.</li>
+    </ul>
+
+    <h3>6. Children's Privacy</h3>
+    <p>Our service is not intended for users under the age of 18. We do not knowingly collect information from minors.</p>
+
+    <h3>7. Changes to This Policy</h3>
+    <p>We may update our Privacy Policy from time to time. Changes will be posted here and effective immediately upon update.</p>
+
+    <h3>8. Contact Us</h3>
+    <p>If you have any questions or concerns about this Privacy Policy:</p>
+    <ul>
+      <li>📧 Email: curide24@gmail.com</li>
+      <li>📞 Phone: 9813655003</li>
+    </ul>
+  </main>
+
+  <footer style="margin-top: 40px; padding: 20px; background-color: #1e1e1e;">
+    <div>
+      <a href="/about" style="margin-right: 20px; color: #03dac6;">About Us</a>
+      <a href="/privacy" style="margin-right: 20px; color: #03dac6;">Privacy Policy</a>
+      <a href="/terms" style="margin-right: 20px; color: #03dac6;">Terms of Service</a>
+      <a href="/contact" style="color: #03dac6;">Contact</a>
+    </div>
+    <div style="margin-top: 10px; color: #aaa;">
+      © 2025 FinSmart. All rights reserved. | Built with 💙 for better money management.
+    </div>
+  </footer>
+</body>
+</html>

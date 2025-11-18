@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FinSmart - Login / Signup</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #121212;
+      color: white;
+    }
+
+    .toggle-link {
+      color: #03dac6;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-top: 10px;
+    }
+
+    .form-box {
+      margin: 30px auto;
+      max-width: 500px;
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #03dac6;
+    }
+
+    .form-box h2 {
+      color: #03dac6;
+      margin-bottom: 20px;
+    }
+
+    .form-box input[type="text"],
+    .form-box input[type="email"],
+    .form-box input[type="password"],
+    .form-box input[type="number"],
+    .form-box input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .form-box input[type="submit"] {
+      background-color: #03dac6;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .form-box input[type="submit"]:hover {
+      background-color: #00bfa5;
+    }
+
+    header {
+      padding: 20px;
+      background-color: #1e1e1e;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .menu a {
+      margin-right: 20px;
+      text-decoration: none;
+      color: #03dac6;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #03dac6;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #1e1e1e;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .error-message {
+      color: red;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="logo">FinSmart</h1>
+    <div class="menu">
+      <a href="{{ url_for('dashboard') if current_user.is_authenticated else url_for('index') }}">Home</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/terms">Terms</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/login">Login</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="form-box">
+     <!-- Login Form -->
+<form method="POST" action="/login" id="login-form">
+  <h2>Login to FinSmart</h2>
+  {% if error %}
+    <p class="error-message">{{ error }}</p>
+  {% endif %}
+  <input type="email" name="email" placeholder="Email" required />
+  <input type="password" name="password" placeholder="Password" required />
+  <input type="submit" value="Login" />
+
+  <!-- 🔹 Google Login Button -->
+  <a href="/login/google" style="display: block; text-align: center; margin: 10px 0; background-color: #0ceeea; color: #000; padding: 10px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+    Sign in with Google
+  </a>
+
+  <p class="toggle-link" onclick="toggleForm()">Don't have an account? Sign up</p>
+</form>
+
+
+      <!-- Signup Form -->
+<form method="POST" action="/signup" id="signup-form" style="display: none;">
+  <h2>Create Your Account</h2>
+  <input type="text" name="name" placeholder="Full Name" required />
+  <input type="email" name="email" placeholder="Email" required />
+  <input type="password" name="password" placeholder="Create Password" required />
+  <input type="number" name="income" placeholder="Monthly Income (₹)" required />
+  <label style="color: #ccc; font-size: 14px;">
+    <input type="checkbox" name="agree_terms" required />
+    I accept the <a href="/terms" style="color: #03dac6;">Terms and Conditions</a>
+  </label>
+  <input type="submit" value="Sign Up" />
+
+  <!-- 🔹 Google Sign-Up Button -->
+  <a href="/login/google" style="display: block; text-align: center; margin: 10px 0; background-color: #ffffff; color: #000; padding: 10px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+    Sign up with Google
+  </a>
+
+  <p class="toggle-link" onclick="toggleForm()">Already have an account? Login</p>
+</form>
+
+    </div>
+  </main>
+
+  <footer>
+    <div>
+      <a href="/about">About Us</a> |
+      <a href="/privacy">Privacy Policy</a> |
+      <a href="/terms">Terms of Service</a> |
+      <a href="/contact">Contact</a>
+    </div>
+    <div style="margin-top: 10px; color: #aaa;">
+      © 2025 FinSmart. All rights reserved. | Built with 💙 for smarter finance.
+    </div>
+  </footer>
+
+  <script>
+    function toggleForm() {
+      const loginForm = document.getElementById("login-form");
+      const signupForm = document.getElementById("signup-form");
+      loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
+      signupForm.style.display = signupForm.style.display === "none" ? "block" : "none";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Credit Score Checker</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #1e1e1e;
+            color: #f1f1f1;
+            box-shadow: 0 0 10px #03dac6;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #03dac6;
+            color: #121212;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        input, select {
+            padding: 8px;
+            margin: 8px;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Check Your Credit Score</h2>
+
+    <form method="POST" action="/score">
+        <input type="number" name="score" placeholder="Enter Credit Score (100-900)" min="100" max="900" required>
+        <input type="submit" value="Check">
+    </form>
+
+    {% if result %}
+        <p><strong>{{ result }}</strong></p>
+
+        {% if offers %}
+            <h3>🏦 Eligible Bank Loan Offers</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bank</th>
+                        <th>Interest Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for offer in offers %}
+                    <tr>
+                        <td>{{ offer.bank }}</td>
+                        <td>{{ offer.rate }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h3>📊 Calculate Your EMI</h3>
+            <form method="POST" action="/calculate_emi">
+                <label for="bank">Select Bank:</label><br>
+                <select name="bank" required>
+                    {% for offer in offers %}
+                        <option value="{{ offer.bank }}">{{ offer.bank }} ({{ offer.rate }})</option>
+                    {% endfor %}
+                </select><br>
+
+                <input type="number" name="amount" placeholder="Loan Amount (₹)" min="1000" required><br>
+                <input type="number" name="tenure" placeholder="Tenure (in years)" min="1" required><br>
+
+                <input type="submit" value="Calculate EMI">
+            </form>
+        {% else %}
+            <p>No suitable loan offers available for this score range.</p>
+        {% endif %}
+    {% endif %}
+
+    {% if emi %}
+        <p><strong>Estimated EMI: ₹{{ emi }}</strong></p>
+    {% endif %}
+
+    <a href="/dashboard">⬅️ Back to Dashboard</a><br><br>
+    <a href="{{ url_for('dashboard') if current_user.is_authenticated else url_for('index') }}">Home</a>
+
+</body>
+</html>

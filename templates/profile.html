@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="form-box">
+    <h2>👤 Edit Profile</h2>
+    <form method="POST">
+      <label>Email</label>
+      <input type="email" name="email" value="{{ email }}" required>
+
+      <label>Monthly Income (₹)</label>
+      <input type="number" name="income" value="{{ income }}" required>
+
+      <button type="submit">💾 Save Changes</button>
+    </form>
+
+    <a href="/dashboard">⬅️ Back to Dashboard</a>
+  </div>
+</body>
+</html>

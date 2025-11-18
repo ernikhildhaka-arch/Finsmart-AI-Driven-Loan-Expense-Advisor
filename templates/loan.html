@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Loan Prediction</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <h2>Loan Eligibility Checker</h2>
+
+  <form method="POST" onsubmit="return validateForm()">
+    <input type="number" name="Age" id="age" placeholder="Age (Must be 18+)" value="{{ request.form.Age or '' }}" required />
+    <input type="number" name="AnnualIncome" id="income" placeholder="Annual Income (Min ₹1,50,000) " value="{{ request.form.AnnualIncome or '' }}" required />
+    <input type="number" name="CreditScore" placeholder="Credit Score" value="{{ request.form.CreditScore or '' }}" required />
+    <input type="number" name="LoanAmount" placeholder="Loan Amount" value="{{ request.form.LoanAmount or '' }}" required />
+    <input type="number" name="MonthlyIncome" placeholder="Monthly Income" value="{{ request.form.MonthlyIncome or '' }}" required />
+    <input type="number" name="TotalLiabilities" placeholder="Total Liabilities" value="{{ request.form.TotalLiabilities or '' }}" required />
+    <input type="number" name="LoanDuration" placeholder="Loan Duration (months)" value="{{ request.form.LoanDuration or '' }}" required />
+    <input type="number" name="InterestRate" step="0.01" placeholder="Interest Rate (%)" value="{{ request.form.InterestRate or '' }}" required />
+
+    <label for="PreviousLoanDefaults">Previous Loan Defaults:</label>
+    <select name="PreviousLoanDefaults" required>
+      <option value="Yes" {% if request.form.PreviousLoanDefaults == 'Yes' %}selected{% endif %}>Yes</option>
+      <option value="No" {% if request.form.PreviousLoanDefaults == 'No' %}selected{% endif %}>No</option>
+    </select>
+
+    <label for="BankruptcyHistory">Bankruptcy History:</label>
+    <select name="BankruptcyHistory" required>
+      <option value="Yes" {% if request.form.BankruptcyHistory == 'Yes' %}selected{% endif %}>Yes</option>
+      <option value="No" {% if request.form.BankruptcyHistory == 'No' %}selected{% endif %}>No</option>
+    </select>
+
+    <label for="EducationLevel">Education Level:</label>
+    <select name="EducationLevel" required>
+      {% for level in ['High School', 'Bachelor', 'Master', 'PhD'] %}
+        <option value="{{ level }}" {% if request.form.EducationLevel == level %}selected{% endif %}>{{ level }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="EmploymentStatus">Employment Status:</label>
+    <select name="EmploymentStatus" required>
+      {% for status in ['Employed', 'Unemployed', 'Self-Employed'] %}
+        <option value="{{ status }}" {% if request.form.EmploymentStatus == status %}selected{% endif %}>{{ status }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="LoanPurpose">Loan Purpose:</label>
+    <select name="LoanPurpose" required>
+      {% for purpose in ['Home', 'Car', 'Debt Consolidation', 'Education'] %}
+        <option value="{{ purpose }}" {% if request.form.LoanPurpose == purpose %}selected{% endif %}>{{ purpose }}</option>
+      {% endfor %}
+    </select>
+
+    <input type="submit" value="Check Eligibility" />
+  </form>
+
+  {% if result is defined %}
+    <p><strong>Result:</strong> {{ '✅ Approved' if result == 1 else '❌ Rejected' }}</p>
+    <p>Approval Probability: {{ probability }}%</p>
+  {% elif error %}
+    <div style="padding: 10px; background-color: #ffe6e6; border: 1px solid red; color: red; margin-top: 10px;">
+      {{ error }}
+    </div>
+  {% endif %}
+
+  <br>
+  <a href="/dashboard">⬅️ Back to Dashboard</a><br><br>
+  <a href="{{ url_for('dashboard') if current_user.is_authenticated else url_for('index') }}">⬅️ Back to Home</a>
+ 
+  
+  <!-- ✅ Client-side validation -->
+  <script>
+    function validateForm() {
+      const age = parseInt(document.getElementById('age').value);
+      const income = parseFloat(document.getElementById('income').value);
+
+      if (isNaN(age) || age < 18) {
+        alert("❌ You must be at least 18 years old to apply for a loan.");
+        return false;
+      }
+
+      if (isNaN(income) || income < 150000) {
+        alert("❌ Your annual income must be at least ₹1,50,000 to be eligible.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FinSmart - About Us</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1 class="logo" style="text-align: left; margin-left: 20px;">FinSmart</h1>
+    <div class="menu">
+      <a href="{{ url_for('dashboard') if current_user.is_authenticated else url_for('index') }}">Home</a>
+
+      <a href="/about">About Us</a>
+      <a href="/contact">Contact</a>
+      <a href="/terms">Terms</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/login">Login</a>
+    </div>
+  </header>
+
+  <main style="padding: 20px; max-width: 900px; margin: auto; text-align: left;">
+    <h2 style="color: #03dac6;">About FinSmart – AI-Driven Loan & Expense Advisor</h2>
+
+    <p>
+      FinSmart is your all-in-one intelligent personal finance assistant — designed to simplify money management,
+      improve budgeting habits, and empower smarter financial decisions.
+    </p>
+
+    <h3 style="color: #03dac6;">🌟 Our Mission</h3>
+    <p>
+      Our mission is to make financial wellness accessible to everyone. Whether it's tracking your expenses,
+      checking loan eligibility, monitoring credit health, or receiving spending alerts, FinSmart helps you stay in control — easily and privately.
+    </p>
+
+    <h3 style="color: #03dac6;">💡 What Makes FinSmart Unique?</h3>
+    <ul>
+      <li>🔍 AI-driven Loan Eligibility Checker</li>
+      <li>📊 Smart Credit Score Evaluator</li>
+      <li>🧮 EMI Calculator with Real-Time Bank Comparison</li>
+      <li>💬 Personal Finance Bot with expense tracking</li>
+      <li>📩 Spending Alert Notifications when you overspend</li>
+      <li>📥 Monthly PDF reports with saving tips and analysis</li>
+      <li>🔒 Privacy-first: No sensitive banking details stored</li>
+    </ul>
+
+    <h3 style="color: #03dac6;">👨‍💻 Meet the Team</h3>
+    <p>
+      Built with passion by developers and finance enthusiasts who believe that understanding money should not require a finance degree.
+    </p>
+    <ul>
+      <li><strong>Nikhil Dhaka</strong> – Founder & Developer</li>
+      <!-- Add more team members here as needed -->
+    </ul>
+
+    <h3 style="color: #03dac6;">🚀 Our Vision</h3>
+    <p>
+      To become India's most trusted and easy-to-use personal finance solution for students, working professionals, and families alike.
+    </p>
+  </main>
+
+  <footer style="margin-top: 40px; padding: 20px; background-color: #1e1e1e;">
+    <div>
+      <a href="/about" style="margin-right: 20px; color: #03dac6;">About Us</a>
+      <a href="/privacy" style="margin-right: 20px; color: #03dac6;">Privacy Policy</a>
+      <a href="/terms" style="margin-right: 20px; color: #03dac6;">Terms of Service</a>
+      <a href="/contact" style="color: #03dac6;">Contact</a>
+    </div>
+    <div style="margin-top: 10px; color: #aaa;">
+      © 2025 FinSmart. All rights reserved. | Built with 💙 for better money management.
+    </div>
+  </footer>
+</body>
+</html>
